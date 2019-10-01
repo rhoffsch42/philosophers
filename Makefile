@@ -6,7 +6,7 @@
 #    By: rhoffsch <rhoffsch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/15 17:38:19 by rhoffsch          #+#    #+#              #
-#    Updated: 2015/10/13 19:49:18 by rhoffsch         ###   ########.fr        #
+#    Updated: 2019/10/01 12:32:04 by rhoffsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INCLUDE =	-I includes -I libft/includes
 
 CFILE	=	main.c \
 			philo.c \
-			action3.c \
+			action.c \
 			images.c \
 			mlx.c \
 			mlx_imgcpy.c

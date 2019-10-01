@@ -6,7 +6,7 @@
 /*   By: rhoffsch <rhoffsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/12 13:59:07 by rhoffsch          #+#    #+#             */
-/*   Updated: 2019/09/26 16:38:56 by rhoffsch         ###   ########.fr       */
+/*   Updated: 2019/10/01 13:13:38 by rhoffsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,18 @@
 # define THINK_T	1
 # define TIMEOUT	60
 
+# define PHILOS_N	7
+# define SUCCESS	0
+# define HP_LOW		MAX_LIFE * 3 / 4 + 1
+
 # define EAT		2
 # define THINK		1
 # define REST		0
 # define DEAD		4
 # define SEC		1000000
+
+# define LEFT		1
+# define RIGHT		1
 
 # define NB_XPM		5
 
@@ -85,11 +92,11 @@ typedef struct	s_env
 typedef struct	s_arg
 {
 	int			ind;
-	t_philo		**philos;
+	t_philo		*philos;
 }				t_arg;
 
 void			*philo(void *arg);
-void			ft_wanna_eat(t_philo **philos, int i);
+void			ft_wanna_eat(t_philo *philos, int i);
 void			ft_launch_mlx(t_mlx *mlx, char *cwd);
 int				ft_key_hook(int keycode, t_env *e);
 int				ft_expose_hook(t_env *e);
@@ -101,7 +108,7 @@ void			ft_mlx_imgcpy(void *src, void *dst, int posx, int posy);
 void			ft_mlx_imgcpy2(void *src, void *dst, int posx, int posy);
 void			ft_draw_bg(t_mlx *mlx, int x, int y);
 
-void			ft_print(t_philo **philos);
+void			ft_print(t_philo *philos);
 void			ft_introduce(t_philo philo, int i);
 
 #endif

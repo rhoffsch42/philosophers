@@ -6,7 +6,7 @@
 /*   By: rhoffsch <rhoffsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/12 13:35:54 by rhoffsch          #+#    #+#             */
-/*   Updated: 2015/10/12 13:35:55 by rhoffsch         ###   ########.fr       */
+/*   Updated: 2019/10/01 12:46:38 by rhoffsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ static void		ft_print_msg(t_env *e, int i)
 			"To DAAAAAAAANCE ! ! !");
 	}
 	else if (i == DEAD)
+	{
 		mlx_string_put(e->mlx->mlx, e->mlx->win, 170, 250, 0xFF0000, \
-			"Somebody died !!!");
+			"Somebody died ! ! !");
+	}
 }
 
 int				ft_expose_hook(t_env *e)
@@ -34,7 +36,7 @@ int				ft_expose_hook(t_env *e)
 	usleep(SEC);
 	if (x != -1)
 	{
-		ft_print(&(e->philos));
+		ft_print(e->philos);
 		i = ft_print_mlx(e);
 	}
 	if ((i == DANCE || i == DEAD) && x != -1)
@@ -43,10 +45,10 @@ int				ft_expose_hook(t_env *e)
 		while (x < 12)
 			pthread_detach(e->philos[(x += 2)].philo) == 0 ? (void)x : exit(7);
 		x = -1;
-		if (i == DEAD)
-			mlx_put_image_to_window(e->mlx->mlx, e->mlx->win, e->mlx->img, \
-				0, 0);
-		i == DEAD ? ft_print(&(e->philos)) : (void)i;
+		i == DEAD ? mlx_put_image_to_window(e->mlx->mlx, e->mlx->win, \
+			e->mlx->img, 0, 0) : (void)i;
+		i == DEAD ? ft_print(e->philos) : (void)i;
+		i == DEAD ? ft_putstr_color("Somebody died ! ! !\n", RED) : (void)i;
 	}
 	if (x != -1)
 		mlx_put_image_to_window(e->mlx->mlx, e->mlx->win, e->mlx->img, 0, 0);
@@ -82,7 +84,7 @@ int				ft_print_stats(t_env *e, int i)
 		ft_mlx_imgcpy2(e->mlx->xhp[hp], e->mlx->img, \
 			ft_pos(i, 0) - 17, ft_pos(i, 1) - 20);
 	}
-	return ((e->philos)[i].status);
+	return (e->philos[i].status);
 }
 
 int				ft_no_key(t_env *e)
